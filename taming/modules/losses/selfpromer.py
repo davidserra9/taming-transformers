@@ -26,7 +26,7 @@ class VQSelfPromer(nn.Module):
         self.perceptual_weight = perceptual_weight
         self.disc_weight = disc_weight
 
-        self.L1 = nn.L1Loss()
+        self.ssim = ...
         self.discriminator = NLayerDiscriminator(input_nc=disc_in_channels,
                                                  n_layers=disc_num_layers,
                                                  use_actnorm=use_actnorm,
@@ -41,4 +41,7 @@ class VQSelfPromer(nn.Module):
 
         self.disc_factor = disc_factor
         self.disc_conditional = disc_conditional
+
+    def forward(self, codebook_loss, inputs, reconstructions):
+
 
